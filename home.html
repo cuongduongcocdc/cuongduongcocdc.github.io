@@ -1,0 +1,190 @@
+<!DOCTYPE html>
+<html lang="vi">
+  <head>
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+    <title>Bầu Trời Xanh</title>
+    <link href="css/home.css" rel="stylesheet" type="text/css" />
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.1/css/all.min.css"
+    />
+    <link
+      rel="stylesheet"
+      href="https://maxcdn.bootstrapcdn.com/bootstrap/4.1.0/css/bootstrap.min.css"
+    />
+  </head>
+  <body>
+    <div id="main">
+      <div id="header">
+        <div class="top">
+          <img src="images/Blue2.png" />
+          <div id="menu">
+            <ul>
+              <li><a href="#">Giới thiệu</a></li>
+              <li><a href="#">Tin tức</a></li>
+              <li><a href="#">Diễn Đàn</a></li>
+            </ul>
+          </div>
+        </div>
+      </div>
+      <div id="body">
+        <div class="ads">
+          <div class="container">
+            <div class="container_slide_show">
+              <ul id="slide_show">
+                <li><img src="images/aaa.jpg" /></li>
+                <li><img src="images/b.jpg" /></li>
+              </ul>
+              <div class="container_button">
+                <button id="prev_slide" class="slide_btn">Prev</button>
+                <button id="next_slide" class="slide_btn">Next</button>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div id="body-center">
+          <h2>Tại sao bạn nên chọn Bầu Trời Xanh?</h2>
+          <div class="container">
+            <div class="row">
+              <div class="whychoose col-md-12">
+                <div class="whychoose-item col-md-3">
+                  <div>
+                    <span
+                      ><i aria-hidden="true" class="fas fa-check-circle"></i
+                    ></span>
+                  </div>
+                  <div><h6>Hơn 50 trẻ đang được theo học</h6></div>
+                </div>
+
+                <div class="whychoose-item col-md-3">
+                  <div>
+                    <span
+                      ><i aria-hidden="true" class="fas fa-check-circle"></i
+                    ></span>
+                  </div>
+                  <div><h6>Hơn 50 trẻ đang được theo học</h6></div>
+                </div>
+
+                <div class="whychoose-item col-md-3">
+                  <div>
+                    <span
+                      ><i aria-hidden="true" class="fas fa-check-circle"></i
+                    ></span>
+                  </div>
+                  <div><h6>Hơn 50 trẻ đang được theo học</h6></div>
+                </div>
+                <div class="whychoose-item col-md-3">
+                  <div>
+                    <span
+                      ><i aria-hidden="true" class="fas fa-check-circle"></i
+                    ></span>
+                  </div>
+                  <div><h6>Hơn 50 trẻ đang được theo học</h6></div>
+                </div>
+              </div>
+
+              <div class="border-whychosse"></div>
+              <div class="title-service">
+                <h2>Dịch vụ của bầu trời xanh</h2>
+              </div>
+
+              <div class="service col-md-12">
+                <div class="item-service col-md-3">
+                  <a><img src="images/aa.jpg" /></a>
+                  <a href="#">Giúp việc theo giờ</a>
+
+                  <p>
+                    Lau dọn, nấu ăn, rửa bát, giặt là, hỗ trợ chăm sóc bé...
+                  </p>
+                </div>
+                <div class="item-service col-md-3">
+                  <a><img src="images/aa.jpg" /></a>
+                  <a href="#">Giúp việc theo giờ</a>
+                  <p>
+                    Lau dọn, nấu ăn, rửa bát, giặt là, hỗ trợ chăm sóc bé...
+                  </p>
+                </div>
+                <div class="item-service col-md-3">
+                  <a><img src="images/aa.jpg" /></a>
+                  <a href="#">Giúp việc theo giờ</a>
+
+                  <p>
+                    Lau dọn, nấu ăn, rửa bát, giặt là, hỗ trợ chăm sóc bé...
+                  </p>
+                </div>
+                <div class="item-service col-md-3">
+                  <a><img src="images/aa.jpg" /></a>
+                  <a href="#">Giúp việc theo giờ</a>
+
+                  <p>
+                    Lau dọn, nấu ăn, rửa bát, giặt là, hỗ trợ chăm sóc bé...
+                  </p>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </body>
+</html>
+
+<script src="https://code.jquery.com/jquery-1.7.0.min.js"></script>
+<script>
+  $("#slide_show > li:first").css("display", "block").addClass("active");
+  var isHoverBtn = false;
+
+  $("#next_slide").bind("click", function () {
+    runSlide(true);
+  });
+
+  $("#prev_slide").bind("click", function () {
+    runSlide(false);
+  });
+
+  $(".slide_btn").hover(
+    function () {
+      isHoverBtn = true;
+    },
+    function () {
+      isHoverBtn = false;
+    }
+  );
+
+  setInterval(function () {
+    if (!isHoverBtn) {
+      runSlide(true);
+    }
+  }, 3000);
+
+  function runSlide(isNext) {
+    var oldItem = $("#slide_show > li.active");
+    var newItem;
+
+    if (isNext) {
+      newItem = oldItem.next();
+
+      if (newItem.length === 0) {
+        newItem = $("#slide_show > li:first");
+      }
+    } else {
+      newItem = oldItem.prev();
+
+      if (newItem.length === 0) {
+        newItem = $("#slide_show > li:last");
+      }
+    }
+
+    if (newItem.length === 0) {
+      newItem = $("#slide_show > li:eq(0)");
+    }
+
+    oldItem.fadeOut(function () {
+      $(this).removeClass("active");
+    });
+
+    newItem.fadeIn(function () {
+      $(this).addClass("active");
+    });
+  }
+</script>
